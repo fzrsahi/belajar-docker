@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  ubuntu-example-compose:
+    container_name: ubuntu-example-compose
+    image : ubuntu:latest
+  ubuntu-example-compose2:
+    container_name: ubuntu-example-compose2
+    image : ubuntu:latest
+  mongo-example-compose:
+    container_name: mongo-example-compose
+    image : mongo:latest
+    ports:
+      - 27017:27017
+    networks:
+      - compose-test-network
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=username
+      - MONGO_INITDB_ROOT_PASSWORD=password
+networks:
+  compose-test-network:
+    name : compose-test-network
